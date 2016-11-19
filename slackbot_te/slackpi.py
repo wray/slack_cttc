@@ -6,8 +6,6 @@ import bot_id
 
 # Instructor and student imports
 import wray.slacklib
-import joe.slacklib
-import chris.slacklib
 
 # constants
 try:
@@ -28,13 +26,11 @@ def handle_command(command, channel):
     """
 
     response = wray.slacklib.handle_command(command)
-    response += joe.slacklib.handle_command(command)
-    response += chris.slacklib.handle_command(command)
 
     print("["+response+"]")
     
     if len(response) == 0:
-        response = "Why thank you, I don't know what else to say."
+        response = "I am not yet a Gosu. Please be patient"
     
     slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)

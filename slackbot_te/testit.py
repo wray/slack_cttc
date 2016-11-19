@@ -2,8 +2,7 @@ import unittest
 import bot_id
 import slackpi
 import wray.slacklib
-import chris.slacklib
-import joe.slacklib
+
 
 class TestSlackBotFunctions(unittest.TestCase):
 
@@ -23,19 +22,6 @@ class TestSlackBotFunctions(unittest.TestCase):
         resp = wray.slacklib.handle_command(wray.slacklib.COMMAND4)
         print(resp)
         self.assertTrue(len(resp) > 1)
-
-    def test_chris_handler(self):
-        self.assertFalse(chris.slacklib.handle_command('') == None)
-        self.assertTrue(len(chris.slacklib.handle_command(
-            chris.slacklib.COMMAND1)) > 1)
-    
-    def test_joe_handler(self):
-        self.assertFalse(joe.slacklib.handle_command('') == None)
-        self.assertTrue(joe.slacklib.handle_command(
-            joe.slacklib.COMMAND1) == "Just barely..." )
-        self.assertTrue(slackpi.handle_command(
-            joe.slacklib.COMMAND1,"") == None)
-        #self.assertFalse(joe.slacklib.handle_command('green led on') == None)
 
 
 if __name__ == '__main__':

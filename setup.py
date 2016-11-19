@@ -6,17 +6,17 @@ from distutils.core import setup
 
 patch_level = int(time.time())
 
-ver = "0.1." + str(patch_level)[4:]
+ver = "0.1." + str(patch_level)[3:]
 
 setup(
-  name = 'slackbot_ts',
+  name = 'slackbot_cttc',
   packages = find_packages(),
   version = ver,
-  description = 'Python Code for Tech Em Studios Classes',
-  author = 'Tech Em Studios',
-  author_email = 'wray@techemstudios.com',
-  url = 'https://github.com/wray/',
-  download_url = 'https://github.com/wray//tarball/'+ver,
+  description = 'Python Code for Slackbot Tech Training Demo',
+  author = 'CapTech Ventures',
+  author_email = 'wmills@captechventures.com',
+  url = 'https://github.com/wray/slack_cttc',
+  download_url = 'https://github.com/wray/slack_cttc/tarball/'+ver,
   keywords = ['slackbot', 'RPi', 'AWS'],
   classifiers = [],
 )

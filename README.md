@@ -1,4 +1,5 @@
-# code-em
-Repo for Code-em class (Fall 2016 Studio)
+# Slack CTTC
+Demo slackbot to stash technologies, watch for them, while also
+suggesting training. 
 
-[![Build Status](https://travis-ci.org/wray/code_em.svg?branch=master)](https://travis-ci.org/wray/code_em)
+[![Build Status](https://travis-ci.org/wray/slack_cttc.svg?branch=master)](https://travis-ci.org/wray/slack_cttc)
