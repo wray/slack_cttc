@@ -14,6 +14,24 @@ COMMAND3 = "temp"
 COMMAND4 = "topic:"
 COMMAND5 = "topics"
 
+def open():
+    return shelve.open('topics')
+
+def save_topic(topic):
+    topics = open()
+    if not topics.has_key(topic):
+        topics[topic] = ()
+        topics.close()
+        return topic
+    else:
+        return None
+
+def all_topics():
+    topics = open()
+    topics_str = str(topics)
+    topics.close()
+    return topics_str
+
 def handle_command(command):
     """
         Determine if the command is valid. If so, take action and return
@@ -33,17 +51,15 @@ def handle_command(command):
 
     elif command.find(COMMAND4) >= 0:
         command = command.encode('utf-8')
-        topics = shelve.open('topics')
         ti = command.find(':')
         topic = command[ti+1:].strip()
-        if not topics.has_key(topic):
-            topics[topic] = ()
-            response = topic + " added."
-        else:
-            response = topic + " already exists."
+        ret = save_topic(topic)
+        response = (ret + " added.") if ret else (topic + " already in there.")
+        
 
     elif command.find(COMMAND5) >= 0:
-        response = str(shelve.open('topics'))
+        response = all_topics()
+        
 
 
     return response
