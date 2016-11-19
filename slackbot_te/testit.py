@@ -19,9 +19,7 @@ class TestSlackBotFunctions(unittest.TestCase):
         self.assertFalse(wray.slacklib.handle_command('') == None)
         self.assertTrue(len(wray.slacklib.handle_command(
             wray.slacklib.COMMAND1)) > 1)
-        resp = wray.slacklib.handle_command(wray.slacklib.COMMAND4)
-        print(resp)
-        self.assertTrue(len(resp) > 1)
+
 
 
 if __name__ == '__main__':
