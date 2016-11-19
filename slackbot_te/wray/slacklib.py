@@ -37,7 +37,7 @@ def handle_command(command):
         ti = command.find(':')
         topic = command[ti+1:].strip()
         if not topics.has_key(topic):
-            topics[topic] = 0
+            topics[topic] = ()
             response = topic + " added."
         else:
             response = topic + " already exists."
