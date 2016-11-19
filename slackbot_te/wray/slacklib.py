@@ -1,6 +1,7 @@
 import random
 import json
 import urllib3
+import shelve
 
 import temp_humidity
 #import led
@@ -10,6 +11,8 @@ COMMAND2 = "what can you do"
 COMMAND3 = "temp"
 #COMMAND4 = "name an animal"
 #COMMAND5 = "green led"
+COMMAND4 = "topic:"
+COMMAND5 = "topics"
 
 def handle_command(command):
     """
@@ -27,6 +30,20 @@ def handle_command(command):
             response = "At my location, the temperature is " + str(temp) + " and the relative humidity is " + str(humidity)
         except:
             response = "At my location, there is a sensor malfunction."
+
+    elif command.find(COMMAND4) >= 0:
+        command = command.encode('utf-8')
+        topics = shelve.open('topics')
+        ti = command.find(':')
+        topic = command[ti+1:].strip()
+        if not topics.has_key(topic):
+            topics[topic] = 0
+            response = topic + " added."
+        else:
+            response = topic + " already exists."
+
+    elif command.find(COMMAND5) >= 0:
+        response = str(shelve.open('topics'))
 
 
     return response
