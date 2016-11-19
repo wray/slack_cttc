@@ -21,8 +21,8 @@ class TestSlackBotFunctions(unittest.TestCase):
             wray.slacklib.COMMAND1)) > 1)
 
     def test_topic_map(self):
-        self.assertTrue(wray.slacklib.handle(command('topic:python')).find('python') >= 0)
-        self.assertTrue(wray.slacklib.handle(command('topics')).find('python') >= 0)
+        self.assertTrue(wray.slacklib.handle_command('topic:python').find('python') >= 0)
+        self.assertTrue(wray.slacklib.handle_command('topics').find('python') >= 0)
 
 
 
