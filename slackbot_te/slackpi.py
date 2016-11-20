@@ -24,8 +24,12 @@ def handle_command(command, channel):
         returns back what it needs for clarification.
         Need to determine an algorithm for student overloaded commands.
     """
+    response = ""
 
-    response = wray.slacklib.handle_command(command)
+    try:
+        response = wray.slacklib.handle_command(command)
+    except:
+        response += str(sys.exc_info()[0])
 
     print("["+response+"]")
     

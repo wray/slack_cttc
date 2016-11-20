@@ -1,5 +1,6 @@
 import random
 import json
+#import urllib2
 import urllib3
 import shelve
 
@@ -14,23 +15,27 @@ COMMAND3 = "temp"
 COMMAND4 = "topic:"
 COMMAND5 = "topics"
 
+headers =  { 'x-api-key': 'rbfYSjUHLS58VdblPBdAZ6sUYiAhJhOe1hCTUKGc',
+                 'Content-Type': 'application/json' }
+
 def open():
-    return shelve.open('topics')
+    pass
+    #return shelve.open('topics')
 
 def save_topic(topic):
-    topics = open()
-    if not topics.has_key(topic):
-        topics[topic] = ()
-        topics.close()
-        return topic
-    else:
-        return None
+    data = { "topic" : topic }
+    #request = urllib2.Request('https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud',json.dumps(data),headers)
+    #response = urllib2.urlopen(request)
+
+    http = urllib3.PoolManager()
+    response = http.urlopen('POST','https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud', headers=headers, body=json.dumps(data)).data
+    return response
 
 def all_topics():
-    topics = open()
-    topics_str = str(topics)
-    topics.close()
-    return topics_str
+    http = urllib3.PoolManager()
+    response = http.urlopen('GET','https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud', headers=headers).data
+    return response
+
 
 def handle_command(command):
     """
@@ -53,8 +58,8 @@ def handle_command(command):
         command = command.encode('utf-8')
         ti = command.find(':')
         topic = command[ti+1:].strip()
-        ret = save_topic(topic)
-        response = (ret + " added.") if ret else (topic + " already in there.")
+        response = save_topic(topic)
+        #response = (ret + " added.") if ret else (topic + " already in there.")
         
 
     elif command.find(COMMAND5) >= 0:
