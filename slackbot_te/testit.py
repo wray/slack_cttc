@@ -22,7 +22,7 @@ class TestSlackBotFunctions(unittest.TestCase):
 
     def test_topic_map(self):
         self.assertTrue(wray.slacklib.handle_command('topic:python').find('exists') >= 0)
-        #self.assertTrue(wray.slacklib.handle_command('topics').find('python') >= 0)
+        self.assertTrue(wray.slacklib.handle_command('topics').find('python') >= 0)
 
 
 
