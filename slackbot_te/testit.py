@@ -4,7 +4,6 @@ import slackpi
 import wray.slacklib
 import harrison.slacklib
 
-
 class TestSlackBotFunctions(unittest.TestCase):
 
     def test_ci(self):
