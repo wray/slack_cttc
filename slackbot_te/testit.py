@@ -2,6 +2,7 @@ import unittest
 import bot_id
 import slackpi
 import wray.slacklib
+import harrison.slacklib
 
 
 class TestSlackBotFunctions(unittest.TestCase):
@@ -24,6 +25,10 @@ class TestSlackBotFunctions(unittest.TestCase):
         self.assertTrue(wray.slacklib.handle_command('topic:python').find('exists') >= 0)
         self.assertTrue(wray.slacklib.handle_command('topics').find('python') >= 0)
 
+    def test_harrison_handler(self):
+        self.assertFalse(harrison.slacklib.handle_command('') == None)
+        self.assertTrue(len(harrison.slacklib.handle_command(
+            harrison.slacklib.COMMAND1)) > 1)
 
 
 if __name__ == '__main__':

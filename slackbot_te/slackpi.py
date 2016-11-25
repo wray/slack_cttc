@@ -6,6 +6,7 @@ import bot_id
 
 # Instructor and student imports
 import wray.slacklib
+import harrison.slacklib
 
 # constants
 try:
@@ -28,6 +29,7 @@ def handle_command(command, channel):
 
     try:
         response = wray.slacklib.handle_command(command)
+        response += harrison.slacklib.handle_command(command)
     except:
         response += str(sys.exc_info()[0])
 
