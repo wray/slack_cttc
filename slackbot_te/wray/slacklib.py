@@ -7,6 +7,8 @@ import shelve
 import temp_humidity
 #import led
 
+topics = []
+
 COMMAND1 = "who are you"
 COMMAND2 = "what can you do"
 COMMAND3 = "temp"
@@ -34,9 +36,14 @@ def save_topic(topic):
 def all_topics():
     http = urllib3.PoolManager()
     response = http.urlopen('GET','https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud', headers=headers).data
+    topics = json.loads(response)
     return response
 
-
+def tag_scanner(output):
+    for word in output['text']:
+        if word in topics.keys():
+            save_topic(word)
+        
 def handle_command(command):
     """
         Determine if the command is valid. If so, take action and return
