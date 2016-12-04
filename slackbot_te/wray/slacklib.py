@@ -7,7 +7,7 @@ import shelve
 import temp_humidity
 #import led
 
-topics = {}
+topics = None
 
 COMMAND1 = "who are you"
 COMMAND2 = "what can you do"
@@ -37,9 +37,12 @@ def all_topics():
     http = urllib3.PoolManager()
     response = http.urlopen('GET','https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud', headers=headers).data
     topics = json.loads(response)
+    print topics
     return response
 
 def tag_scanner(output):
+    if not topics:
+        all_topics()
     for word in output['text']:
         if word in topics.keys():
             save_topic(word)
