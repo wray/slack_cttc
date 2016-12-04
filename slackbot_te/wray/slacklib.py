@@ -34,6 +34,7 @@ def save_topic(topic):
     return response
 
 def all_topics():
+    global topics
     http = urllib3.PoolManager()
     response = http.urlopen('GET','https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud', headers=headers).data
     topics = json.loads(response)
@@ -41,6 +42,7 @@ def all_topics():
     return response
 
 def tag_scanner(output):
+    global topics
     if not topics:
         all_topics()
     for word in output['text']:
