@@ -49,7 +49,7 @@ def tag_scanner(bot_id,output):
         all_topics()
     for word in output['text'].split(" "):
         if word in topics.keys():
-            source = "slack " + bot_id.get_channel_name(output['channel'])
+            source = "slack #" + bot_id.get_channel_name(output['channel'])
             user = bot_id.get_channel_name(output['user'])
             save_topic(word,source,user)
         
