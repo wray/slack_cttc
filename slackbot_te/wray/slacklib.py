@@ -7,7 +7,7 @@ import shelve
 import temp_humidity
 #import led
 
-topics = []
+topics = {}
 
 COMMAND1 = "who are you"
 COMMAND2 = "what can you do"
