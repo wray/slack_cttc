@@ -24,9 +24,9 @@ class TestSlackBotFunctions(unittest.TestCase):
         self.assertTrue(wray.slacklib.handle_command('topic:python').find('exists') >= 0)
         self.assertTrue(wray.slacklib.handle_command('topics').find('python') >= 0)
 
-    def test_tag_sanner(self):
-        output = {'text':'lambda','channel':'test','user':'wray'}
-        self.assertTrue(wray.slacklib.tag_scanner(bot_id,output))
+    #def test_tag_sanner(self):
+    #    output = {'text':'lambda','channel':'test','user':'wray'}
+    #    self.assertTrue(wray.slacklib.tag_scanner(bot_id,output))
         
     def test_harrison_handler(self):
         self.assertFalse(harrison.slacklib.handle_command('') == None)
