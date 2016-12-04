@@ -43,14 +43,14 @@ def all_topics():
     print topics
     return response
 
-def tag_scanner(output):
+def tag_scanner(bot_id,output):
     global topics
     if not topics:
         all_topics()
     for word in output['text'].split(" "):
         if word in topics.keys():
-            source = "slack " + output['channel']
-            user = output['user']
+            source = "slack " + bot_id.get_channel_name(output['channel'])
+            user = bot_id.get_channel_name(output['user'])
             save_topic(word,source,user)
         
 def handle_command(command):

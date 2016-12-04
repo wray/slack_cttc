@@ -21,3 +21,13 @@ def get_id():
         print("could not find bot user with the name " + BOT_NAME)
 
     return id
+
+def get_user_name(id):
+    api_call = slack_client.api_call("users.info",user=id)
+    if api_call.get('ok'):
+        return api_call.get('user').get('name')
+
+def get_channel_name(id):
+    api_call = slack_client.api_call("channels.info",channel=id)
+    if api_call.get('ok'):
+        return api_call.get('channel').get('name')
