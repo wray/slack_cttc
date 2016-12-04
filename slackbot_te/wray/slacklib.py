@@ -24,8 +24,10 @@ def open():
     pass
     #return shelve.open('topics')
 
-def save_topic(topic):
-    data = { "topic" : topic }
+def save_topic(topic, source ="", user=""):
+    data = { "topic" : topic,
+             "source" : source,
+             "user" : user }
     #request = urllib2.Request('https://ogdpk9s2k8.execute-api.us-east-1.amazonaws.com/prod/topicCrud',json.dumps(data),headers)
     #response = urllib2.urlopen(request)
 
@@ -47,7 +49,9 @@ def tag_scanner(output):
         all_topics()
     for word in output['text'].split(" "):
         if word in topics.keys():
-            save_topic(word)
+            source = "slack " + output['channel']
+            user = output['user']
+            save_topic(word,source,user)
         
 def handle_command(command):
     """
