@@ -45,7 +45,7 @@ def tag_scanner(output):
     global topics
     if not topics:
         all_topics()
-    for word in output['text']:
+    for word in output['text'].split(" "):
         if word in topics.keys():
             save_topic(word)
         
