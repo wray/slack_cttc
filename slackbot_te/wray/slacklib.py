@@ -5,7 +5,7 @@ import urllib3
 import shelve
 
 import temp_humidity
-#import led
+import led
 
 topics = None
 
@@ -20,6 +20,14 @@ COMMAND5 = "topics"
 headers =  { 'x-api-key': 'rbfYSjUHLS58VdblPBdAZ6sUYiAhJhOe1hCTUKGc',
                  'Content-Type': 'application/json' }
 
+
+def blink_green():
+    for i in range(2):
+        led.green_led(1)
+        time.sleep(0.2)
+        led.green_led(0)
+        time.sleep(0.2)
+    
 def open():
     pass
     #return shelve.open('topics')
@@ -52,6 +60,7 @@ def tag_scanner(bot_id,output):
             source = "slack #" + bot_id.get_channel_name(output['channel'])
             user = bot_id.get_user_name(output['user'])
             save_topic(word,source,user)
+            blink_green()
         
 def handle_command(command):
     """
