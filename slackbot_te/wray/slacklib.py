@@ -6,6 +6,7 @@ import shelve
 
 import temp_humidity
 import led
+import time
 
 topics = None
 
@@ -23,10 +24,10 @@ headers =  { 'x-api-key': 'rbfYSjUHLS58VdblPBdAZ6sUYiAhJhOe1hCTUKGc',
 
 def blink_green():
     for i in range(2):
+        time.sleep(0.2)
         led.green_led(1)
         time.sleep(0.2)
         led.green_led(0)
-        time.sleep(0.2)
     
 def open():
     pass
