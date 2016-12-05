@@ -17,6 +17,7 @@ COMMAND3 = "temp"
 #COMMAND5 = "green led"
 COMMAND4 = "topic:"
 COMMAND5 = "topics"
+COMMAND6 = "get-ip"
 
 headers =  { 'x-api-key': 'rbfYSjUHLS58VdblPBdAZ6sUYiAhJhOe1hCTUKGc',
                  'Content-Type': 'application/json' }
@@ -99,7 +100,10 @@ def handle_command(command):
 
     elif command.find(COMMAND5) >= 0:
         response = all_topics()
-        
+
+    elif command.find(COMMAND6) >= 0:
+        import socket
+        response = str(socket.gethostbyname(socket.gethostname()))
 
 
     return response
