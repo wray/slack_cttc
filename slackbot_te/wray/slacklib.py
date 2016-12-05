@@ -69,8 +69,8 @@ def tag_scanner(bot_id,output):
             user = bot_id.get_user_name(output['user'])
             save_topic(word,source,user)
             blink_green()
-        elif 'tccmd.wrayesian.com' in word:
-            blink_red()
+        #elif 'tccmd.wrayesian.com' in word:
+        #    blink_red()
         
 def handle_command(command):
     """
