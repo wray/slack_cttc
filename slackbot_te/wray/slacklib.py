@@ -28,6 +28,13 @@ def blink_green():
         led.green_led(1)
         time.sleep(0.2)
         led.green_led(0)
+
+def blink_red():
+    for i in range(2):
+        time.sleep(0.2)
+        led.red_led(1)
+        time.sleep(0.2)
+        led.red_led(0)
     
 def open():
     pass
@@ -62,6 +69,8 @@ def tag_scanner(bot_id,output):
             user = bot_id.get_user_name(output['user'])
             save_topic(word,source,user)
             blink_green()
+        elif 'tccmd.wrayesian.com' in word:
+            blink_red()
         
 def handle_command(command):
     """
