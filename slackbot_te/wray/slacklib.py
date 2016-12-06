@@ -68,11 +68,12 @@ def tag_scanner(bot_id,output):
     for word in output['text'].split(" "):
         if word.lower() in topics.keys():
             source = "slack #" + bot_id.get_channel_name(output['channel'])
-            user = bot_id.get_user_name(output['user'])
-            save_topic(word,source,user)
-            blink_green()
-    #except:
-    #    pass
+            try:
+                user = bot_id.get_user_name(output['user'])
+                save_topic(word,source,user)
+                blink_green()
+            except:
+                pass
         elif 'tccmd.wrayesian.com' in word:
             blink_red()
         
