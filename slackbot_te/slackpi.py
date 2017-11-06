@@ -4,10 +4,15 @@ import time
 from slackclient import SlackClient
 
 import bot_id
+import glob
+import importlib
 
 # Instructor and student imports
-import wray.slacklib
-import harrison.slacklib
+names_paths = glob.blog("./*/slacklib.py")
+for name in names_path:
+    name.lstrip("./")
+    name.strip("/slacklib.py")
+    importlib.importmodule(name)
 
 # constants
 try:
