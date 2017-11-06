@@ -8,12 +8,8 @@ import glob
 import importlib
 
 # Instructor and student imports
-name_paths = glob.glob("./*/slacklib.py")
-for name in name_paths:
-    name = name.lstrip("./")
-    name = name.strip(".py")
-    name = name.replace('/','.')
-    importlib.importmodule(name)
+import wray.slacklib
+import harrison.slacklib
 
 # constants
 try:
