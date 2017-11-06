@@ -1,6 +1,6 @@
 
-GREEN_LED = 27
-RED_LED = 17
+GREEN_LED = 19
+RED_LED = 6
 BLUE_LED = 20
 
 try:

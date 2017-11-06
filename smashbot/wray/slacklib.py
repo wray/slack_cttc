@@ -13,10 +13,8 @@ topics = None
 COMMAND1 = "who are you"
 COMMAND2 = "what can you do"
 COMMAND3 = "temp"
-#COMMAND4 = "name an animal"
-#COMMAND5 = "green led"
-COMMAND4 = "topic:"
-COMMAND5 = "topics"
+COMMAND4 = "red led"
+COMMAND5 = "green led"
 COMMAND6 = "get-ip"
 
 headers =  { 'x-api-key': 'rbfYSjUHLS58VdblPBdAZ6sUYiAhJhOe1hCTUKGc',
@@ -95,16 +93,28 @@ def handle_command(command):
             response = "At my location, there is a sensor malfunction."
 
     elif command.find(COMMAND4) >= 0:
-        command = command.encode('utf-8')
-        ti = command.find(':')
-        topic = command[ti+1:].strip()
-        response = save_topic(topic)
-        #response = (ret + " added.") if ret else (topic + " already in there.")
-        
+
+        if command.find("on") >= 0:
+            led.red_led(1)
+            response = "ok"
+        elif command.find("off") >= 0:
+            led.red_led(0)
+            response = "ok"
+        else:
+            response = "I'm not sure what to do with the red led."
 
     elif command.find(COMMAND5) >= 0:
-        response = all_topics()
 
+        if command.find("on") >= 0:
+            led.green_led(1)
+            response = "ok"
+        elif command.find("off") >= 0:
+            led.green_led(0)
+            response = "ok"
+        else:
+            response = "I'm not sure what to do with the green led."
+
+            
     elif command.find(COMMAND6) >= 0:
         import socket
         s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)

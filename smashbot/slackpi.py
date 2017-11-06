@@ -39,7 +39,7 @@ def handle_command(command, channel):
     print("["+response+"]")
     
     if len(response) == 0:
-        response = "I am not yet a Gosu. Please be patient"
+        response = "I am still in training. Please be patient"
     
     slack_client.api_call("chat.postMessage", channel=channel,
                           text=response, as_user=True)
