@@ -8,8 +8,8 @@ import glob
 import importlib
 
 # Instructor and student imports
-names_paths = glob.glob("./*/slacklib.py")
-for name in names_path:
+name_paths = glob.glob("./*/slacklib.py")
+for name in name_paths:
     name.lstrip("./")
     name.strip("/slacklib.py")
     importlib.importmodule(name)
