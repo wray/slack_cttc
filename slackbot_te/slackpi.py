@@ -8,7 +8,7 @@ import glob
 import importlib
 
 # Instructor and student imports
-names_paths = glob.blog("./*/slacklib.py")
+names_paths = glob.glob("./*/slacklib.py")
 for name in names_path:
     name.lstrip("./")
     name.strip("/slacklib.py")
