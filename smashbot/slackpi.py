@@ -10,8 +10,9 @@ import importlib
 # Instructor and student imports
 name_paths = glob.glob("./*/slacklib.py")
 for name in name_paths:
-    name.lstrip("./")
-    name.strip("/slacklib.py")
+    name = name.lstrip("./")
+    name = name.strip(".py")
+    name = name.replace('/','.')
     importlib.importmodule(name)
 
 # constants
